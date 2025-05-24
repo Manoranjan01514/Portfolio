@@ -3,258 +3,191 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Manoranjan Sen's Portfolio</title>
+<title>Professional Portfolio - Manoranjan Sen</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
-
   :root {
-    --primary-color: #4f46e5;
-    --secondary-color: #6366f1;
-    --text-color: #333;
-    --bg-color: #f9fafb;
-    --accent-color: #10b981;
+    --primary-color: #0066ff;
+    --secondary-color: #004aad;
+    --light-color: #f5f7fa;
+    --dark-color: #222;
+    --gray-color: #666;
+    --highlight-name: #ff6600; /* orange */
+    --highlight-dev: #33cc99; /* teal */
+    --highlight-designer: #ff3366; /* pinkish */
+    --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
 
+  /* Reset and base */
   * {
     box-sizing: border-box;
   }
-
   body {
-    font-family: 'Poppins', sans-serif;
-    background-color: white;
-    margin: 0;
-    color: var(--text-color);
-    scroll-behavior: smooth;
+    margin:0;
+    font-family: var(--font-sans);
+    background: var(--light-color);
+    color: var(--dark-color);
+    line-height: 1.6;
+  }
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  img {
+    max-width: 100%;
+    display: block;
+    border-radius: 4px;
   }
 
-  header {
-    background-color: #1f3945;
-    box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
-    position: fixed;
-    width: 100%;
-    height: 80px;
-    top: 0;
-    z-index: 10000;
-  }
 
+  /* Container */
   .container {
-    max-width: 960px;
+    width: min(90%, 1000px);
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 0 3rem;
   }
 
+  /* Header - new style */
+  header {
+    background-color: #0b1a3f; /* dark navy */
+    color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
   nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    padding: 1rem 0;
     position: relative;
   }
-
-  nav h1 {
-    font-weight: 600;
-    color: var(--primary-color);
+  .logo {
     font-size: 1.5rem;
-    cursor: default;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-  }
-
-  nav .profile-logo {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--secondary-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
     font-weight: 700;
-    font-size: 22px;
-    user-select: none;
-    box-shadow: 0 0 6px var(--secondary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-top: 5px; /* Shift logo down */
+  }
+  .logo img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2.5px solid white;
+    box-shadow: 0 0 8px rgba(255,255,255,0.7);
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .nav-links a {
+    font-weight: 600;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    color: white;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    background-color: var(--primary-color);
+    color: white;
   }
 
-  /* Menu button styles */
-  .menu-button {
+  /* Hamburger Menu */
+  .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
-    width: 30px;
-    height: 24px;
-    justify-content: space-between;
+    margin-left: auto;
   }
-
-  .menu-button span {
-    display: block;
-    height: 4px;
-    background-color: var(--primary-color);
-    border-radius: 2px;
+  .line {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    margin: 3px 0;
     transition: 0.3s;
   }
 
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  /* Hero Section */
+  #hero {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 3rem 1rem 7rem;
+    text-align: center;
     display: flex;
-    gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
   }
-
-  nav ul li a {
-    text-decoration: none;
-    font-weight: 500;
-    color: var(--text-color);
-    font-size: 1rem;
-    transition: color 0.3s ease;
-    padding: 2px 6px;
+  #hero .hero-text {
+    flex: 1 1 320px;
+    max-width: 500px;
   }
-
-  nav ul li a:hover {
-    color: var(--primary-color);
+  #hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.7rem;
+    line-height: 1.2;
   }
-
-  /* Responsive menu: hide nav by default on small screens */
-  @media (max-width: 768px) {
-    .menu-button {
-      display: flex;
-    }
-
-    nav ul {
-      position: absolute;
-      top: 60px;
-      right: 24px;
-      background-color: #678065;
-      flex-direction: column;
-      width: 200px;
-      border-radius: 8px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-      padding: 12px 0;
-      display: none;
-      z-index: 10001;
-    }
-
-    nav ul.show {
-      display: flex;
-    }
-
-    nav ul li {
-      width: 100%;
-      text-align: right;
-      padding: 8px 16px;
-    }
-
-    nav ul li a {
-      display: block;
-      width: 100%;
-    }
+  #hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    line-height: 1.4;
   }
-
-  section {
-    padding: 100px 0 60px;
-  }
-
-  h2 {
-    text-align: center;
-    font-weight: 600;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    font-size: 2rem;
-    letter-spacing: 1px;
-  }
-  .home {
-    text-align: center;
-    margin-top: 80px;
-    padding-bottom: 50px;
-  }
-
-  .profile-image {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    margin: 0 auto;
-    overflow: hidden;
-    box-shadow: 0 0 15px rgba(0,0,0,0.15);
-  }
-
-  .profile-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .intro {
-    font-size: 1.9rem;
-    margin-top: 20px;
-    font-weight: 400;
-  }
-
-  .highlight {
-    color: var(--accent-color);
+  .highlight-name {
+    color: var(--highlight-name);
     font-weight: 700;
   }
-
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-    gap: 20px;
-    max-width: 960px;
-    margin: 0 auto;
+  #dynamic-text {
+    font-weight: 700;
   }
-
-  .project-card {
-    background-color:white;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease;
+  .highlight-dev {
+    color: var(--highlight-dev);
   }
-
-  .project-card:hover {
-    transform: translateY(-8px);
+  .highlight-designer {
+    color: var(--highlight-designer);
   }
-
-  .project-image {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    margin: 0 auto;
-    overflow: hidden;
-    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+  #cursor {
+    display: inline-block;
+    background-color: white;
+    width: 2px;
+    margin-left: 2px;
+    animation: blink 1s step-start infinite;
+    vertical-align: bottom;
+    height: 1.3em;
   }
-
-  .project-content {
-    padding: 16px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+  @keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
   }
-
-  .project-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 0 ;
-    text-align: center;
+  .btn-primary {
+    background-color: white;
     color: var(--primary-color);
+    font-weight: 700;
+    padding: 0.75rem 2rem;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 8px 15px rgba(255,255,255,0.4);
   }
-
-  .project-desc {
-    font-weight: 300;
-    font-size: 1.2rem;
-    flex-grow: 1;
-    color: #555;
+  .btn-primary:hover {
+    background-color: #e6eaff;
+    color: var(--secondary-color);
   }
-
-  .view-project {
+    .view-project {
     margin-top: 10px;
-    background-color: var(--primary-color);
+    background-color: blue ;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding : 10px 30px 10px 30px ;
     border-radius: 30px;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -263,324 +196,567 @@
   }
 
   .view-project:hover {
-    background-color: var(--accent-color);
+    background-color: red;
   }
-
-  .skills-list {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 14px;
-  }
-
-  .skill {
-    background-color: var(--secondary-color);
+  .Down-Re{
+    margin-top: 10px;
+    background-color: red;
     color: white;
-    font-weight: 500;
-    padding: 10px 18px;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    user-select: none;
-    transition: background-color 0.3s ease;
-  }
-
-  .skill:hover {
-    background-color: var(--primary-color);
-  }
-
-  .contact-form {
-    max-width: 480px;
-    margin: 0 auto;
-    background: white;
-    padding: 24px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
-  }
-
-  .form-group {
-    margin-bottom: 16px;
-  }
-
-  label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 6px;
-    color: var(--primary-color);
-  }
-
-  input[type="text"],
-  input[type="email"],
-  textarea {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1.5px solid #ccc;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-family: inherit;
-    transition: border-color 0.3s ease;
-    resize: vertical;
-  }
-
-  input[type="text"]:focus,
-  input[type="email"]:focus,
-  textarea:focus {
-    border-color: var(--primary-color);
-    outline: none;
-  }
-
-  button {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 14px 28px;
-    font-size: 1.1rem;
-    font-weight: 600;
+    border: 1.3px solid;
+    border-color: white;
+    padding: 10px 20px;
     border-radius: 30px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-weight: 600;
+    font-size: 1rem;
+    
   }
-
-  button:hover {
-    background-color: var(--accent-color);
+.Down-Re:hover {
+  background-color: green ;
+}
+h3{
+  padding-top: 50px;
+  padding-bottom: 40px;
+  font-size: 40px;
+}
+  
+  #hero .hero-image {
+    flex: 1 1 280px;
+    max-width: 320px;
+    border-radius: 50%; 
+    border: 2px solid ;
+    border-color: white ;
+    overflow: hidden;
+    box-shadow: 0 0 18px rgba(0,0,0,0.25);
+    background: white;
   }
+  #hero .hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
 
-  .footer {
+  /* Sections */
+  section {
+    margin-top: -5rem;
+    padding: 6rem 0 4rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+  }
+  section h2 {
     text-align: center;
-    padding: 24px 0 40px;
-    font-weight: 300;
-    color: #777;
-    background-color: #1f3945;
-    font-size: 0.9rem;
-    position: relative;
-  }
-
-  .footer a {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
     color: var(--primary-color);
-    text-decoration: none;
+  }
+  section .underline {
+    width: 70px;
+    height: 4px;
+    background: var(--primary-color);
+    margin: 0.5rem auto 2rem;
+    border-radius: 3px;
   }
 
-  .social-links {
-    margin-top: 16px;
+  /* About */
+  #about {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.1rem;
+    color: var(--gray-color);
+  }
+
+  /* Projects */
+  #projects .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 2rem;
+  }
+  .project-card {
+    background: var(--light-color);
+    border-radius: 8px;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.1);
+    overflow: hidden;
     display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  .project-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+  .project-image {
+    border-radius: 30px;
+    height: 160px;
+    overflow: hidden;
+  }
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .project-card:hover .project-image img {
+    transform: scale(1.1);
+  }
+  .project-content {
+    padding: 1rem 1.2rem 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-content h3 {
+    margin: 0 0 0.5rem;
+    color: var(--secondary-color);
+  }
+  .project-content p {
+    flex-grow: 1;
+    color: var(--gray-color);
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+  .project-links {
+    margin-top: auto;
+  }
+  .project-links a {
+    text-decoration: none;
+    padding: 0.4rem 0.8rem;
+    font-weight: 600;
+    border-radius: 20px;
+    border: 1.5px solid var(--primary-color);
+    color: var(--primary-color);
+    margin-right: 0.6rem;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .project-links a:hover {
+    background-color: var(--primary-color);
+    color: white;
+  }
+
+  /* Skills */
+  #skills .skills-list {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
     justify-content: center;
-    gap: 24px;
+  }
+  .skill {
+    background: var(--light-color);
+    color: var(--secondary-color);
+    font-weight: 600;
+    border-radius: 50px;
+    padding: 0.5rem 1.2rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  .skill:hover {
+    background-color: var(--primary-color);
+    color: white;
   }
 
-  .social-links a svg {
-    width: 28px;
-    height: 28px;
-    fill: var(--primary-color);
-    transition: fill 0.3s ease;
+  /* Contact */
+  #contact form {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  #contact input, #contact textarea {
+    padding: 0.8rem 1rem;
+    border: 1.5px solid var(--gray-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    color: var(--dark-color);
+    resize: vertical;
+    transition: border-color 0.3s ease;
+  }
+  #contact input:focus, #contact textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(0,102,255,0.25);
+  }
+  #contact button {
+    background-color: var(--primary-color);
+    border: none;
+    color: white;
+    padding: 0.75rem 1.7rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  #contact button:hover {
+    background-color: var(--secondary-color);
+  }
+  #contact .contact-info {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--gray-color);
+    font-size: 0.95rem;
+  }
+  #contact .contact-info a {
+    color: var(--primary-color);
+    font-weight: 600;
   }
 
-  .social-links a:hover svg {
-    fill: var(--accent-color);
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    color:black;
+    font-size: 0.9rem;
+    border-top: 1px solid #ddd;
+    background:#A188A6;
+    margin-top: 3rem;
+  }
+  footer .social-links {
+    display: inline-flex;
+  gap: 1.4rem;
+    margin: 0 5px;
+    justify-content: center;
+    align-items: center;
+  }
+  footer .social-links a {
+    color: blue;
+    font-size: 1.8rem;
+    transition: color 0.3s;
+  }
+  footer .social-links a:hover {
+    color: green;
   }
 
+  /* Responsive nav menu toggle for small screens */
+  @media (max-width: 700px) {
+    nav {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .hamburger {
+      display: flex;
+    }
+    .nav-links {
+      display: none; /* Hide links by default on mobile */
+      flex-direction: column;
+      width: 100%;
+      background-color: #0b1a3f; /* Match header background */
+      position: absolute;
+      top: 60px; /* Position below header */
+      left: 0;
+      z-index: 999;
+      padding: 1rem 0;
+    }
+    .nav-links.active {
+      display: flex; /* Show links when active */
+    }
+    .nav-links a {
+      padding: 1rem 0;
+      text-align: center;
+      font-size: 1.2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    #hero {
+      flex-direction: column;
+      text-align: center;
+      gap: 2.5rem;
+    }
+    #hero .hero-text, #hero .hero-image {
+      max-width: 90vw;
+    }
+  }
 </style>
 </head>
 <body>
-
-<header>
-  <div class="container">
-    <nav>
-      <h1>
-        <div class="profile-logo" title="Manoranjan Sen">MS</div>
+  <header>
+    <nav class="container" aria-label="Primary Navigation">
+      <div class="logo" tabindex="0">
+        <a href="#hero"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=48&q=80" alt="Profile logo of Manoranjan Sen" /></a>
         Manoranjan Sen
-      </h1>
-      <button class="menu-button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul id="primary-navigation" role="menu">
-        <li role="none"><a role="menuitem" href="#home" tabindex="0">Home</a></li>
-        <li role="none"><a role="menuitem" href="#about" tabindex="0">About Me</a></li>
-        <li role="none"><a role="menuitem" href="#skills" tabindex="0">My Skills</a></li>
-        <li role="none"><a role="menuitem" href="#projects" tabindex="0">Projects</a></li>
-        <li role="none"><a role="menuitem" href="#contact" tabindex="0">Contact Me</a></li>
-      </ul>
+      </div>
+      <div class="hamburger" aria-label="Main Menu" aria-controls="navigation" aria-expanded="false" role="button" tabindex="0" id="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <div class="nav-links" id="navigation">
+        <a href="#hero" class="active" tabindex="0">Home</a>
+        <a href="#about" tabindex="0">About</a>
+        <a href="#projects" tabindex="0">Projects</a>
+        <a href="#skills" tabindex="0">Skills</a>
+        <a href="#contact" tabindex="0">Contact</a>
+      </div>
     </nav>
-  </div>
-</header>
+  </header>
 
-<main>
-  <section id="home" class="home">
-    <div class="profile-image" aria-label="Profile image">
-      <img src="https://assets.onecompiler.app/43jdsehne/43jdx87yx/software-developer-g1372d020e_1280.jpg" alt="Web Developer image" />
-    </div>
-    <div class="intro" aria-live="polite" aria-atomic="true">
-      <p>Hey, I am <strong> Manoranjan Sen</strong>, I am a <span id="role" class="highlight">web developer</span></p>
-    </div>
-  </section>
-<hr>
-  <section id="about" class="about">
-    <h2><u>About Me</u></h2>
-    <pre>
-        <h1>
-I am a passionate web developer
-  and web designer who enjoys
-   creating beautiful user 
-   experiences and writing
-   clean, maintainable code.
+  <main>
+    <section id="hero" role="banner" aria-label="Introduction and web developer image">
+      <div class="container" style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:3rem;">
+        <div class="hero-text" tabindex="0">
+          <h3>
+            Hey I am,<br> <span class="highlight-name"><i>Manoranjan Sen</i></span><br />
+            I am a <br>&nbsp;
+            <span id="dynamic-text" class="highlight-dev">web developer</span><span id="cursor" class="cursor"></span>
+          </h3>
+          <a href="#projects" class="btn-primary" role="button">View My Work</a>
+        </div>
+                          <button class="Down-Re" onclick="window.open('_blank')" aria-label="Download Resume">Download Resume</button>
+        <div class="hero-image" aria-label="Web developer portrait image">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80" alt="Portrait of a web developer Man wearing glasses" />
+
+        </div>
+
+      </div>
+    </section>
     
-       </h1>
-    </pre>
-  </section>
-<hr>
-  <section id="skills" class="skills">
-    <h2><u>My Skills </u></h2>
-    <div class="skills-list" role="list">
-      <span class="skill" role="listitem">HTML5</span>
-      <span class="skill" role="listitem">CSS3</span>
-      <span class="skill" role="listitem">JavaScript</span>
-      <span class="skill" role="listitem">Ms Excel</span>
-      <span class="skill" role="listitem">Ms Word</span>
-      <span class="skill" role="listitem">Ms PowerPoint</span>
-      <span class="skill" role="listitem">Responsive Design</span>
-      <span class="skill" role="listitem">Web Design</span>
-      <span class="skill" role="listitem">React</span>
-      <span class="skill" role="listitem">Node.js</span>
-      <span class="skill" role="listitem">Git</span>
-      <span class="skill" role="listitem">REST APIs</span>
+    <section id="about" tabindex="0" aria-label="About Me">
+      <div class="container">
+        <h2>About Me</h2>
+        <div class="underline"></div>
+        <p>
+          I am a passionate frontend developer building beautiful, user-friendly websites and web applications.
+          Skilled in HTML, CSS, JavaScript, and modern frameworks with a keen eye for design and functionality.
+          I love turning ideas into reality through clean and efficient code.
+        </p>
+      </div>
+    </section>
+    
+    <section id="projects" aria-label="My Projects">
+      <div class="container">
+        <h2>Projects</h2>
+        <div class="underline"></div>
+        <div class="projects-grid">
+          <article class="project-card" tabindex="0">
+            <div class="project-image">
+              <img src="https://assets.onecompiler.app/43jdsehne/43jg4fxnt/images%20-%202025-05-22T171807.295.jpeg" alt="Project One screenshot" />
+            </div>
+            <div class="project-content">
+              <h3 style="text-align:center">Advanced Age Calculator</h3>
+              <p>A web application that calculates age based on the date of birth.</p>
+              <div class="project-links">
+                <button class="view-project" onclick="window.open('https://manoranjan01514.github.io/Advanced-Age-Calculator/')" aria-label="View Advanced Age Calculator project">View Project</button>
+              </div>
+            </div>
+          </article>
+          <article class="project-card" tabindex="0">
+            <div class="project-image">
+              <img src="https://assets.onecompiler.app/43jdsehne/43jg4fxnt/images%20(1).png" alt="Project Two screenshot" />
+            </div>
+            <div class="project-content">
+              <h3 style="text-align:center">Tic Tac Toe </h3>
+              <p>A classic Tic Tac Toe game built with JavaScript.</p>
+              <div class="project-links">
+                <button class="view-project" onclick="window.open('https://manoranjan01514.github.io/Tic-Tac-Toe/')" aria-label="View Advanced Age Calculator project">View Project</button>
+              </div>
+            </div>
+          </article>
+          <article class="project-card" tabindex="0">
+            <div class="project-image">
+              <img src="https://assets.onecompiler.app/43jdsehne/43jg4fxnt/images%20-%202025-05-22T173102.380.jpeg" alt="Project Three screenshot" />
+            </div>
+            <div class="project-content">
+              <h3 style="text-align:center">To Do List</h3>
+              <p>simple and effective to-do list application to manage tasks.</p>
+              <div class="project-links">
+                <button class="view-project" onclick="window.open('https://manoranjan01514.github.io/To-Do-List/')" aria-label="View Advanced Age Calculator project">View Project</button>
+                    
+              </div>
+            </div>
+          </article>
+          <article class="project-card" tabindex="0">
+            <div class="project-image">
+              <img src="https://assets.onecompiler.app/43jdsehne/43jg4fxnt/images%20-%202025-05-22T175542.265.jpeg" alt="Project One screenshot" />
+            </div>
+            <div class="project-content">
+              <h3 style="text-align:center">Login & Registration Form</h3>
+              <p>A secure login and registration form for user authentication.</p>
+              <div class="project-links">
+                <button class="view-project" onclick="window.open('https://manoranjan01514.github.io/Login-Form/')" aria-label="View Advanced Age Calculator project">View Project</button>
+              </div>
+            </div>
+          </article>
+          <article class="project-card" tabindex="0">
+            <div class="project-image">
+              <img src="https://assets.onecompiler.app/43jdsehne/43jg4fxnt/images%20-%202025-05-23T231011.530.jpeg" alt="Project One screenshot" />
+            </div>
+            <div class="project-content">
+              <h3 style="text-align:center">Calculator</h3>
+              <p>A simple calculator application for basic arithmetic operations.</p>
+              <div class="project-links">
+                <button class="view-project" onclick="window.open('https://manoranjan01514.github.io/Calculator/')" aria-label="View Advanced Age Calculator project">View Project</button>
+              </div>
+            </div>
+          </article>
+          <article class="project-card" tabindex="0">
+            <div class="project-image">
+              <img src="https://assets.onecompiler.app/43jdsehne/43jg4fxnt/images%20-%202025-05-23T231557.002.jpeg" alt="Project One screenshot" />
+            </div>
+            <div class="project-content">
+              <h3 style="text-align:center">Tribute Page</h3>
+              <p>Tribute page for Nikola Tesla.</p>
+              <div class="project-links">
+                <button class="view-project" onclick="window.open('https://manoranjan01514.github.io/Tribute-Page/')" aria-label="View Advanced Age Calculator project">View Project</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  
+    <section id="skills" tabindex="0" aria-label="Skills">
+      <div class="container">
+        <h2>Skills</h2>
+        <div class="underline"></div>
+        <div class="skills-list">
+          <span class="skill">HTML5</span>
+          <span class="skill">CSS3</span>
+          <span class="skill">JavaScript</span>
+          <span class="skill">React</span>
+          <span class="skill">Vue.js</span>
+          <span class="skill">Git & GitHub</span>
+          <span class="skill">Responsive Design</span>
+          <span class="skill">UI/UX Design</span>
+          <span class="skill">Sass</span>
+          <span class="skill">Ms Excel</span>
+          <span class="skill">Ms Word</span>
+          <span class="skill">Ms Powerpoint</span></span>
+        </div>
+      </div>
+    </section>
+    
+    <section id="contact" aria-label="Contact Me">
+      <div class="container">
+        <h2>Contact Me</h2>
+        <div class="underline"></div>
+        <form aria-label="Contact form">
+          <input type="text" name="name" placeholder="Your Name" aria-label="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" aria-label="Your Email" required />
+          <textarea name="message" rows="5" placeholder="Your Message" aria-label="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+        <div class="contact-info">
+          <p>Email: <a href="mailto:manoranjansen001@gmail.com">manoranjansen001@gmail.com</a></p>
+        
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <footer>
+    <div class="social-links" aria-label="Social media links" role="contentinfo">
+      <a href="https://youtube.com/" aria-label="YouTube" target="https://youtube.com/@tseries" rel="noopener" title="YouTube">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="28" height="28" viewBox="0 0 24 24"><path d="M19.615 3.184c-1.675-.115-8.329-.115-8.329-.115s-6.655 0-8.33.115c-1.615.11-2.88 1.466-2.88 3.15v7.451c0 1.684 1.265 3.04 2.88 3.15 1.675.115 8.329.115 8.329.115s6.655 0 8.33-.115c1.615-.11 2.88-1.466 2.88-3.15V6.334c0-1.683-1.265-3.038-2.88-3.15zm-9.615 9.32V7.486l5.432 2.509-5.432 2.509z"/></svg>
+      </a>
+      <a href="https://linkedin.com/" aria-label="LinkedIn" target="https://www.linkedin.com/in/manoranjan-sen-910945354" rel="noopener" title="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="28" height="28" viewBox="0 0 24 24"><path d="M6.94 21.5H3.243V9h3.696v12.5zM5.09 7.583c-1.185 0-2.147-.977-2.147-2.18 0-1.203.962-2.18 2.148-2.18s2.147.976 2.147 2.18c0 1.203-.962 2.18-2.147 2.18zM21.532 21.5h-3.69v-6.575c0-1.563-.56-2.628-1.828-2.628-1.002 0-1.6.674-1.863 1.33-.096.232-.12.556-.12.88v6.993h-3.692s.048-11.352 0-12.5h3.692v1.77c.491-.758 1.372-1.837 3.342-1.837 2.44 0 4.27 1.593 4.27 5.013v7.555z"/></svg>
+      </a>
+      <a href="https://github.com/" aria-label="GitHub" target="https://github.com/Manoranjan01514" rel="noopener" title="GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="28" height="28" viewBox="0 0 24 24"><path d="M12 .296c-6.627 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.6.111.793-.261.793-.577v-2.234c-3.338.724-4.033-1.416-4.033-1.416-.546-1.385-1.333-1.754-1.333-1.754-1.089-.744.083-.729.083-.729 1.205.084 1.838 1.237 1.838 1.237 1.07 1.834 2.805 1.304 3.49.997.108-.775.419-1.305.762-1.605-2.665-.305-5.467-1.331-5.467-5.931 0-1.309.469-2.381 1.235-3.221-.123-.303-.535-1.53.117-3.189 0 0 1.008-.322 3.301 1.23a11.5 11.5 0 0 1 3.003-.404c1.02.005 2.047.138 3.003.404 2.292-1.552 3.3-1.23 3.3-1.23.653 1.659.241 2.886.118 3.189.77.84 1.234 1.911 1.234 3.221 0 4.611-2.807 5.622-5.48 5.92.43.37.823 1.102.823 2.222v3.293c0 .319.192.694.8.576C20.565 22.092 24 17.592 24 12.296c0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+      <a href="https://twitter.com/" aria-label="Twitter" target="https://x.com/Manoranjansen01" rel="noopener" title="Twitter">
+        <svg xmlns="https://github.com/Manoranjan01514" fill="currentColor" width="28" height="28" viewBox="0 0 24 24"><path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195a4.92 4.92 0 0 0-8.384 4.482c-4.086-.205-7.713-2.164-10.141-5.144-1.29 2.213-.664 5.1 1.523 6.574a4.904 4.904 0 0 1-2.228-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.935 4.935 0 0 1-2.224.085c.623 1.951 2.444 3.377 4.6 3.42A9.86 9.86 0 0 1 0 19.54a13.962 13.962 0 0 0 7.548 2.212c9.051 0 14-7.496 14-13.986 0-.21 0-.423-.015-.632A9.936 9.936 0 0 0 24 4.557z"/></svg>
+      </a>
+      </a>
+    <
     </div>
-  </section>
-<hr>
-  <section id="projects" class="projects">
-    <h2><u>My Projects</u></h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <img class="project-image" src="https://assets.onecompiler.app/43jdsehne/43jg4fxnt/images%20-%202025-05-22T171807.295.jpeg" alt="Advanced Age Calculator project image" />
-        <div class="project-content">
-          <h3 class="project-title">Advanced Age Calculator</h3>
-          <p class="project-desc">A web application that calculates age based on the date of birth.</p>
-          <button class="view-project" onclick="window.open('https://manoranjan01514.github.io/Advanced-Age-Calculator/')" aria-label="View Advanced Age Calculator project">View Project</button>
-        </div>
-      </div>
-      <div class="project-card">
-        <img class="project-image" src="https://assets.onecompiler.app/43jdsehne/43jg4fxnt/images%20-%202025-05-22T173102.380.jpeg" alt="To Do List project image" />
-        <div class="project-content">
-          <h3 class="project-title">To Do List</h3>
-          <p class="project-desc">A simple and effective to-do list application to manage tasks.</p>
-          <button class="view-project" onclick="window.open('https://manoranjan01514.github.io/To-Do-List/')" aria-label="View To Do List project">View Project</button>
-        </div>
-      </div>
-      <div class="project-card">
-        <img class="project-image" src="https://assets.onecompiler.app/43jdsehne/43jg4fxnt/images%20-%202025-05-22T173907.241.jpeg" alt="Tic Tac Toe project image" />
-        <div class="project-content">
-          <h3 class="project-title">Tic Tac Toe</h3>
-          <p class="project-desc">A classic Tic Tac Toe game built with JavaScript.</p>
-          <button class="view-project" onclick="window.open('https://manoranjan01514.github.io/Tic-Tac-Toe/')" aria-label="View Tic Tac Toe project">View Project</button>
-        </div>
-      </div>
-      <div class="project-card">
-        <img class="project-image" src="https://assets.onecompiler.app/43jdsehne/43jg4fxnt/images.png" alt="Calculator project image" />
-        <div class="project-content">
-          <h3 class="project-title">Calculator</h3>
-          <p class="project-desc">A simple calculator application for basic arithmetic operations.</p>
-          <button class="view-project" onclick="window.open('https://manoranjan01514.github.io/Calculator/')" aria-label="View Calculator project">View Project</button>
-        </div>
-      </div>
-      <div class="project-card">
-        <img class="project-image" src="https://assets.onecompiler.app/43jdsehne/43jg4fxnt/images%20-%202025-05-22T175542.265.jpeg" alt="Login and Registration Form project image" />
-        <div class="project-content">
-          <h3 class="project-title">Login & Registration Form</h3>
-          <p class="project-desc">A secure login and registration form for user authentication.</p>
-          <button class="view-project" onclick="window.open('https://manoranjan01514.github.io/Login-Form/')" aria-label="View Login and Registration Form project">View Project</button>
-        </div>
-      </div>
-    </div>
-  </section>
-<hr>
-  <section id="contact" class="contact">
-    <h2><u>Contact Me </u></h2>
-    <form class="contact-form" id="contactForm" onsubmit="return submitForm(event)" aria-label="Contact form">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input required type="text" id="name" name="name" placeholder="Your name" />
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input required type="email" id="email" name="email" placeholder="Your email" />
-      </div>
-      <div class="form-group">
-        <label for="message">Message</label>
-        <textarea required id="message" name="message" placeholder="Your message" rows="5"></textarea>
-      </div>
-      <button type="submit">Send Message</button>
-      <p id="formStatus" style="margin-top:10px;font-weight:600;"></p>
-    </form>
-  </section>
-</main>
+    <p>&copy; 2024 Manoranjan Sen. All rights reserved.</p>
+  </footer>
+  <script>
+    // Smooth scroll and nav highlight
+    const navLinks = document.querySelectorAll('.nav-links a');
+    function setActiveLink(){
+      let index = navLinks.length;
+      while(--index && window.scrollY + 150 < document.querySelector(navLinks[index].hash).offsetTop){}
+      navLinks.forEach(link => link.classList.remove('active'));
+      navLinks[index].classList.add('active');
+    }
+    setActiveLink();
+    window.addEventListener('scroll', setActiveLink);
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(e.target.hash).scrollIntoView({behavior: 'smooth'});
+        if(window.innerWidth <= 700) {
+          closeMenu();
+        }
+      });
+    });
 
-<footer class="footer" role="contentinfo">
-  &copy; 2024 Manoranjan Sen. All rights reserved.
-  <div class="social-links" aria-label="Social media links">
-    <a href="https://youtube.com/" target="https://youtube.com/@tseries" title="YouTube" rel="noopener" aria-label="YouTube">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M23.499 6.203a2.937 2.937 0 0 0-2.066-2.079C19.132 3.5 12 3.5 12 3.5s-7.132 0-9.433.624A2.937 2.937 0 0 0 .5 6.203 30.01 30.01 0 0 0 0 12a30.01 30.01 0 0 0 .5 5.797 2.937 2.937 0 0 0 2.067 2.08c2.3.624 9.433.624 9.433.624s7.132 0 9.433-.624a2.937 2.937 0 0 0 2.066-2.08A30.01 30.01 0 0 0 24 12a30.01 30.01 0 0 0-.501-5.797zM9.75 15.02V8.98l6.25 3.02-6.25 3.02z"/>
-      </svg>
-    </a>
-    <a href="https://linkedin.com/" target="https://www.linkedin.com/in/manoranjan-sen-910945354" title="LinkedIn" rel="noopener" aria-label="LinkedIn">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.327-.026-3.034-1.849-3.034-1.851 0-2.133 1.445-2.133 2.939v5.664H9.354V9h3.414v1.561h.047c.476-.9 1.637-1.849 3.366-1.849 3.602 0 4.266 2.37 4.266 5.455v6.285zM5.337 7.433a2.07 2.07 0 1 1 0-4.141 2.07 2.07 0 0 1 0 4.141zm1.777 13.019H3.56V9h3.554v11.452zM22.225 0H1.771C.792 0 0 .771 0 1.722v20.556C0 23.23.792 24 1.771 24h20.451c.983 0 1.778-.77 1.778-1.722V1.722C24 .771 23.208 0 22.225 0z"/>
-      </svg>
-    </a>
-    <a href="https://github.com/" target="https://github.com/Manoranjan01514" title="GitHub" rel="noopener" aria-label="GitHub">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M12 0a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.07 1.83 2.8 1.3 3.48.99.11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.94 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.24 1.9 1.24 3.22 0 4.62-2.8 5.63-5.48 5.93.44.38.83 1.12.83 2.26v3.36c0 .32.22.7.83.58A12 12 0 0 0 12 0Z"/>
-      </svg>
-    </a>
-    <a href="https://twitter.com/" target="https://x.com/Manoranjansen01" title="X" rel="noopener" aria-label="X">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M23.954 4.569a10 10 0 0 1-2.825.775 4.93 4.93 0 0 0 2.163-2.724 9.865 9.865 0 0 1-3.127 1.188 4.916 4.916 0 0 0-8.384 4.482A13.945 13.945 0 0 1 1.671 3.149a4.822 4.822 0 0 0-.664 2.475c0 1.708.869 3.216 2.188 4.099A4.904 4.904 0 0 1 .964 9.15v.061a4.916 4.916 0 0 0 3.949 4.813 4.996 4.996 0 0 1-2.212.084 4.919 4.919 0 0 0 4.588 3.414A9.868 9.868 0 0 1 .975 19.733a13.905 13.905 0 0 0 7.548 2.209c9.056 0 14.009-7.496 14.009-13.987 0-.21 0-.423-.015-.633a9.936 9.936 0 0 0 2.442-2.548l.002-.003z"/>
-      </svg>
-    </a>
-  </div>
-</footer>
+    // Hamburger toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navigation');
 
-<script>
-  const roles = ["web developer", "web designer"];
-  let currentRoleIndex = 0;
+    hamburger.addEventListener('click', () => {
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', !expanded);
+      navMenu.classList.toggle('active');
+    });
 
-  function changeRole() {
-    const roleElement = document.getElementById("role");
-    currentRoleIndex = (currentRoleIndex + 1) % roles.length;
-    roleElement.textContent = roles[currentRoleIndex];
-  }
+    hamburger.addEventListener('keydown', (e) => {
+      // Allow toggling with Enter or Space key for accessibility
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        hamburger.click();
+      }
+    });
 
-  setInterval(changeRole, 2000); // Change role every 2 seconds
+  function closeMenu() {
+      hamburger.setAttribute('aria-expanded', false);
+      navMenu.classList.remove('active');
+    }
 
-  function submitForm(e) {
-    e.preventDefault();
-    const status = document.getElementById('formStatus');
-    status.style.color = 'var(--primary-color)';
-    status.textContent = 'Sending...';
+    // Typing effect for "web developer" and "web designer"
+    const dynamicTextEl = document.getElementById('dynamic-text');
+    const words = [
+      {text: 'web developer', className: 'highlight-dev'},
+      {text: 'web designer', className: 'highlight-designer'}
+    ];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingSpeed = 120;
+    const erasingSpeed = 60;
+    const delayBetweenWords = 2000;
 
-    // Simulate sending message (since no backend)
-    setTimeout(() => {
-      status.style.color = 'var(--accent-color)';
-      status.textContent = 'Thank you! I will get back to you soon.';
-      document.getElementById('contactForm').reset();
-    }, 1500);
+    function type() {
+      const currentWord = words[wordIndex];
+      if (!isDeleting) {
+        // typing
+        dynamicTextEl.textContent = currentWord.text.substring(0, charIndex + 1);
+        dynamicTextEl.className = currentWord.className;
+        charIndex++;
+        if (charIndex === currentWord.text.length) {
+          setTimeout(() => {
+            isDeleting = true;
+            type();
+          }, delayBetweenWords);
+          return;
+        }
+      } else {
+        // deleting
+        dynamicTextEl.textContent = currentWord.text.substring(0, charIndex - 1);
+        charIndex--;
+        if (charIndex === 0) {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+        }
+      }
+      setTimeout(type, isDeleting ? erasingSpeed : typingSpeed);
+    }
 
-    return false;
-  }
-
-  // Menu button toggle
-  const menuButton = document.querySelector('.menu-button');
-  const navLinks = document.querySelector('nav ul');
-
-  menuButton.addEventListener('click', () => {
-    const expanded = menuButton.getAttribute('aria-expanded') === 'true' || false;
-    menuButton.setAttribute('aria-expanded', !expanded);
-    navLinks.classList.toggle('show');
-  });
-</script>
-
+    document.addEventListener('DOMContentLoaded', () => {
+      type();
+    });
+  </script>
 </body>
 </html>
-
-  
