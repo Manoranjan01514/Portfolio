@@ -4,6 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Professional Portfolio - Manoranjan Sen</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <style>
   :root {
     --primary-color: #0066ff;
@@ -423,18 +426,45 @@ h3{
   }
   footer .social-links {
     display: inline-flex;
-  gap: 1.4rem;
     margin: 0 5px;
     justify-content: center;
     align-items: center;
   }
   footer .social-links a {
-    color: blue;
-    font-size: 1.8rem;
-    transition: color 0.3s;
+    margin: 0 5px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    background-color: white;
+    align-content: center;
+    justify-content: center;
+    box-shadow: 1px 4px 2px 2px gray;
+    transition: all 0.3s linear;
+  }
+    
+  footer .social-links a i{
+    font-size: 25px;
   }
   footer .social-links a:hover {
-    color: green;
+    transform: scale(1.4);
+  }
+  #Y-logo{
+    color: red;
+  }
+  #L-logo{
+    color: blue;
+  }
+  #G-logo{
+    color: black;
+  }
+  #T-logo{
+    color: black;
+  }
+  #E-logo{
+    color: skyblue;
+  }
+  #M{
+    text-align: center;
   }
 
   /* Responsive nav menu toggle for small screens */
@@ -644,32 +674,30 @@ h3{
           <textarea name="message" rows="5" placeholder="Your Message" aria-label="Your Message" required></textarea>
           <button type="submit">Send Message</button>
         </form>
-        <div class="contact-info">
-          <p>Email: <a href="mailto:manoranjansen001@gmail.com">manoranjansen001@gmail.com</a></p>
-        
-        </div>
       </div>
     </section>
   </main>
 
     <footer>
-    <div class="social-links" aria-label="Social media links" role="contentinfo">
-      <a href="https://youtube.com/" aria-label="YouTube" target="https://youtube.com/@tseries" rel="noopener" title="YouTube">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="28" height="28" viewBox="0 0 24 24"><path d="M19.615 3.184c-1.675-.115-8.329-.115-8.329-.115s-6.655 0-8.33.115c-1.615.11-2.88 1.466-2.88 3.15v7.451c0 1.684 1.265 3.04 2.88 3.15 1.675.115 8.329.115 8.329.115s6.655 0 8.33-.115c1.615-.11 2.88-1.466 2.88-3.15V6.334c0-1.683-1.265-3.038-2.88-3.15zm-9.615 9.32V7.486l5.432 2.509-5.432 2.509z"/></svg>
+    <div class="social-links">
+    <a href="https://youtube.com/" aria-label="YouTube" target="https://youtube.com/@tseries">
+        <i id="Y-logo"class="fa-brands fa-youtube"></i>
       </a>
-      <a href="https://linkedin.com/" aria-label="LinkedIn" target="https://www.linkedin.com/in/manoranjan-sen-910945354" rel="noopener" title="LinkedIn">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="28" height="28" viewBox="0 0 24 24"><path d="M6.94 21.5H3.243V9h3.696v12.5zM5.09 7.583c-1.185 0-2.147-.977-2.147-2.18 0-1.203.962-2.18 2.148-2.18s2.147.976 2.147 2.18c0 1.203-.962 2.18-2.147 2.18zM21.532 21.5h-3.69v-6.575c0-1.563-.56-2.628-1.828-2.628-1.002 0-1.6.674-1.863 1.33-.096.232-.12.556-.12.88v6.993h-3.692s.048-11.352 0-12.5h3.692v1.77c.491-.758 1.372-1.837 3.342-1.837 2.44 0 4.27 1.593 4.27 5.013v7.555z"/></svg>
-      </a>
-      <a href="https://github.com/" aria-label="GitHub" target="https://github.com/Manoranjan01514" rel="noopener" title="GitHub">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="28" height="28" viewBox="0 0 24 24"><path d="M12 .296c-6.627 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.6.111.793-.261.793-.577v-2.234c-3.338.724-4.033-1.416-4.033-1.416-.546-1.385-1.333-1.754-1.333-1.754-1.089-.744.083-.729.083-.729 1.205.084 1.838 1.237 1.838 1.237 1.07 1.834 2.805 1.304 3.49.997.108-.775.419-1.305.762-1.605-2.665-.305-5.467-1.331-5.467-5.931 0-1.309.469-2.381 1.235-3.221-.123-.303-.535-1.53.117-3.189 0 0 1.008-.322 3.301 1.23a11.5 11.5 0 0 1 3.003-.404c1.02.005 2.047.138 3.003.404 2.292-1.552 3.3-1.23 3.3-1.23.653 1.659.241 2.886.118 3.189.77.84 1.234 1.911 1.234 3.221 0 4.611-2.807 5.622-5.48 5.92.43.37.823 1.102.823 2.222v3.293c0 .319.192.694.8.576C20.565 22.092 24 17.592 24 12.296c0-6.627-5.373-12-12-12z"/></svg>
-      </a>
-      <a href="https://twitter.com/" aria-label="Twitter" target="https://x.com/Manoranjansen01" rel="noopener" title="Twitter">
-        <svg xmlns="https://github.com/Manoranjan01514" fill="currentColor" width="28" height="28" viewBox="0 0 24 24"><path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195a4.92 4.92 0 0 0-8.384 4.482c-4.086-.205-7.713-2.164-10.141-5.144-1.29 2.213-.664 5.1 1.523 6.574a4.904 4.904 0 0 1-2.228-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.935 4.935 0 0 1-2.224.085c.623 1.951 2.444 3.377 4.6 3.42A9.86 9.86 0 0 1 0 19.54a13.962 13.962 0 0 0 7.548 2.212c9.051 0 14-7.496 14-13.986 0-.21 0-.423-.015-.632A9.936 9.936 0 0 0 24 4.557z"/></svg>
-      </a>
-      </a>
-    <
+    <a href="https://linkedin.com/" aria-label="linkedin" target="https://www.linkedin.com/in/manoranjan-sen-910945354">
+      <i id="L-logo" class="fa-brands fa-linkedin"></i>
+    </a>
+    <a href="https://github.com/" aria-label ="GitHub" target="https://github.com/Manoranjan01514">
+      <i id="G-logo"class="fa-brands fa-github"></i>
+    </a>
+    <a href="https://twitter.com/"aria-label ="Twitter " target="https://x.com/Manoranjansen01">
+      <i id="T-logo"class="fa-brands fa-x-twitter"></i>
+    </a>
+    <a href="mailto: manoranjansen001@gmail.com">
+      <i id="E-logo"class="fa-solid fa-envelope"></i>
+    </a>
     </div>
     <p>&copy; 2024 Manoranjan Sen. All rights reserved.</p>
+    <p id="M">built with love❤️ & JavaScript</p>
   </footer>
   <script>
     // Smooth scroll and nav highlight
@@ -759,4 +787,4 @@ h3{
     });
   </script>
 </body>
-</html>
+      </html>
